@@ -47,6 +47,10 @@ namespace Packaging.Targets.Rpm
             {
                 return RpmFileFlags.RPMFILE_DOC;
             }
+            else if (entry.TargetPath.StartsWith("/etc") && entry.TargetPath.EndsWith(".conf"))
+            {
+                return RpmFileFlags.RPMFILE_CONFIG | RpmFileFlags.RPMFILE_NOREPLACE;
+            }
             else
             {
                 return RpmFileFlags.None;
